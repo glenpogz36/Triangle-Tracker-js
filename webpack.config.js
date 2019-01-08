@@ -17,7 +17,7 @@ module.exports = {
     new UglifyJsPlugin({ sourceMap: true }),
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
-      title: 'MyProject',
+      title: 'Triangle',
       template: './src/index.html',
       inject: 'body'
     })
@@ -36,20 +36,12 @@ module.exports = {
         loader: 'url-loader'
       },
       {
-        test: /\.(js|jsx)$/,
+        test: /\.js$/,
         exclude: [
           /node_modules/,
           /spec/
         ],
-        loader: "babel-loader",
-        options: {
-          presets: ['es2015']
-        }
-      },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: ["babel-loader", "eslint-loader"]
+        loader: "eslint-loader"
       }
     ]
   }
